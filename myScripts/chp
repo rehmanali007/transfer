@@ -1,0 +1,14 @@
+#!/bin/bash
+set -x
+	while true
+	do
+		pidof bluetoothd || sudo systemctl start bluetooth	#Start bluetooth service if not running already
+		pidof pulseaudio || pulseaudio --start	#start pulseaudio service if not running already
+		bluetoothctl connect 63:4C:AC:78:C6:98
+		if [[ $? -ne 0 ]]
+		then
+			continue
+		else
+			break
+		fi
+	done

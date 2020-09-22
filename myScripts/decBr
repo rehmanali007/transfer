@@ -1,0 +1,18 @@
+#!/bin/bash
+set -x
+br_file="/sys/class/backlight/intel_backlight/brightness"
+if [[ ! -w $br_file ]]
+then
+	sudo -A chown virchual $br_file
+fi
+
+c_br=$(cat $br_file)
+m_br=900
+
+n_br=$(expr $c_br - 50)
+if [[ ! $n_br -le 200 ]]
+then
+	echo $n_br > $br_file
+else
+	notify-send "Can't Go Down!"
+fi

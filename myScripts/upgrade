@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sudo apt full-upgrade -y
+if [[ $? -ne 0 ]]
+then
+	upgrade
+else
+	echo done
+fi

@@ -1,0 +1,31 @@
+#!/bin/bash
+set -x
+
+backup_dir="/home/virchual/Library/backups"
+HOME="/home/virchual"
+c="cp -uR"
+
+if [[ ! -d $backup_dir/config_files ]]
+then
+	mkdir $backup_dir/config_files
+fi
+
+touch $backup_dir/config_files/lastBackup
+echo -e "# $(date)" > $backup_dir/config_files/lastBackup
+
+
+$c $HOME/.bash_aliases $backup_dir/config_files/bash_aliases.bak
+
+$c $HOME/.config/i3/config $backup_dir/config_files/i3.config.bak
+$c /etc/i3status.conf $backup_dir/config_files/i3status.conf.bak
+
+crontab -l > $backup_dir/config_files/crontab.bak
+
+$c $HOME/myScripts/* $backup_dir/config_files/myScripts/
+
+$c $HOME/.config/ $backup_dir/dot_config
+
+sudo $c /etc/ $backup_dir/etc	#backup /etc directory
+
+$c $HOME/.sudoers.local $backup_dir/config_files/sudoers.local
+

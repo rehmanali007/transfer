@@ -1,0 +1,51 @@
+#!/bin/bash
+
+ps aux | grep [c]hromium > /dev/null
+run_stat=$?
+
+if [[ run_stat -ne 0 ]]
+then
+	i3-msg workspace 2:Web
+	/usr/bin/chromium
+else
+	i3-msg workspace 2:Web
+fi
+#!/bin/bash
+
+ps aux | grep [h]top > /dev/null
+run_stat=$?
+
+if [[ run_stat -ne 0 ]]
+then
+	i3-msg workspace Htop
+	/usr/bin/terminator -T Htop -x sudo htop
+else
+	i3-msg workspace Htop
+fi
+#!/bin/bash
+
+#set -x
+dir=/home/virchual/myScripts/startups
+set $(ls $dir)
+list=$@
+for script in $list
+do
+	echo $script
+	/bin/bash -c $dir/$script &
+done
+#!/bin/bash
+
+if [[ $(pidof thunar) == '' ]]
+then
+ 	thunar
+fi
+#!/bin/bash
+
+pidof VBoxSVC
+if [[ $? -ne 0 ]]
+then
+	i3-msg workspace Virtualbox
+	/usr/bin/virtualbox > /dev/null
+else
+	i3-msg workspace Virtualbox
+fi

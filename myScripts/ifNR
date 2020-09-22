@@ -1,0 +1,13 @@
+#!/bin/bash
+#set -x
+
+status=$(ps aux | grep -c $1)
+#echo $status > ~/sto
+if [ $status -eq 4 ]
+then
+	#echo $status > ~/st
+	#/bin/bash -c $1
+	exit 0
+else
+	exit 1
+fi

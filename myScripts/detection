@@ -1,0 +1,73 @@
+#!/bin/bash
+
+########################################< Variables >########################################
+
+search_mac1=
+search_mac2=0
+declare -x located_mac1=false
+declare -x located_mac2=false
+log=/tmp/log
+F_Rec=~/Records/F_Records
+
+########################################< Functions >########################################
+
+function record()
+{
+	echo $(date +%d-%b-%y%t%a%t%r) >> $F_Rec
+	echo Detected! >> $F_Rec
+	echo "#################################################################################################" >> $F_Rec
+}
+
+function scan()
+{
+	while true
+	do
+		sudo nmap -sn 192.168.10.1/24 -n > $log
+		if [[ $search_mac1 == $(grep $search_mac1 $log | cut -d " " -f 3) ]]
+		then
+			located_mac1=true
+		fi
+		
+		if [[ $search_mac2 == $(grep $search_mac2 $log | cut -d " " -f 3) ]]
+		then
+			located_mac2=true
+		fi
+
+		if [[ $located_mac1 == false && $located_mac2 == false ]]
+		then
+			sleep 10
+			continue
+		else
+			break;
+		fi
+	done
+}
+
+function disp()
+{
+	if [[ $located_mac1 == true && $located_mac2 == true ]]
+	then
+		ip_addr1=$(grep $search_mac1 $log -B 2 | grep "Nmap scan" | cut -d " " -f 5)
+		ip_addr2=$(grep $search_mac2 $log -B 2 | grep "Nmap scan" | cut -d " " -f 5)
+		zenity --timeout=12 --width=400 --height=400 --info --text "Target found with:\nIP Address: $ip_addr1 \nMAC Address: $search_mac1\nMobile Device:IPhone 5s\n\nTarget found with:\nIP Address: $ip_addr2 \nMAC Address: $search_mac2\nMobile Device: Huawei Nova plus"
+
+	else
+		if [[ $located_mac1 == true ]]		
+		then
+			ip_addr=$(grep $search_mac1 $log -B 2 | grep "Nmap scan" | cut -d " " -f 5)
+			zenity --timeout=10 --width=400 --height=300 --info --text "Target found with:\nIP Address: $ip_addr \nMAC Address: $search_mac1\nMobule Device: ";
+		fi
+		if [[ $located_mac2 == true ]]
+		then
+			ip_addr=$(grep $search_mac2 $log -B 2 | grep "Nmap scan" | cut -d " " -f 5)
+	       		zenity --timeout=10 --width=400 --height=300 --info --text "Target found with:\nIP Address: $ip_addr \nMAC Address: $search_mac2\nMobile Device: ";
+		fi
+
+	fi
+}
+
+############################################< Main script >###############################################
+scan
+disp
+record
+rm $log

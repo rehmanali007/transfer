@@ -1,0 +1,10 @@
+#!/bin/bash
+set -x
+
+tmp_dir=/tmp/$$_nr
+mkdir $tmp_dir
+
+unzip -d $tmp_dir ~/General/TS/.Nr.zip 
+
+gpicview $tmp_dir/*.jpg && rm -R $tmp_dir
+clear

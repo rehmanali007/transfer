@@ -1,0 +1,39 @@
+#!/bin/bash
+
+wallpaper=""
+#set -x
+
+#<------------------------------------------------>
+
+function lidIsOpen()
+{
+	#get the current status of LID
+	state=$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')
+	if [[ $state == "open" ]]
+	then
+		return 0
+	elif [[ $state == "closed" ]]
+	then
+		return 1
+	fi
+}
+	
+#<-------------------------------->
+
+
+
+while true
+do
+	state=$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')
+	if [[ $state == "open" ]]
+	then
+		continue
+	elif [[ $state == "closed" ]]
+	then
+		#wallpaper=$(ls /home/virchual/Fav_Wallpapers/*.png | shuf -n1 )
+		#i3lock -i $wallpaper 
+		sudo hibernate
+		sleep 60
+	fi
+done
+

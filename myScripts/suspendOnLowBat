@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -x
+
+min_cap=20
+critical_cap=10
+
+while true
+do
+	current_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+	state=$(cat /sys/class/power_supply/BAT0/status)
+	if [[ $current_capacity -gt $min_cap || $state == "Full" || $state == "Charging" ]]
+	then
+		sleep 3
+		continue
+	else
+		if [[ $current_capacity -gt $critical_cap && $current_capacity -le $min_cap ]]
+		then
+			notify-send "Battery Low!"
+			sleep 20
+			continue
+		else
+			i3lock -i $(ls /home/virchual/Fav_Wallpapers/*.png | shuf -n1) && systemctl hibernate
+			sleep 20
+		fi
+	fi
+done

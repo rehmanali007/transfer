@@ -1,0 +1,12 @@
+#!/bin/bash
+set -x
+if [[ $# -ne 1 ]]
+then
+	echo "Usage: $0 ps_name"
+	exit 1
+fi
+
+pName=$1
+
+kill -9 $(pidof $pName)
+

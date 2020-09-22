@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wallpaper=$(ls ~/Fav_Wallpapers/*.png | shuf -n1)
+
+i3lock -i $wallpaper

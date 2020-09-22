@@ -1,0 +1,29 @@
+#!/usr/bin/env python3.7
+
+import subprocess
+import re
+import optparse
+import time
+
+##################< Variables >####################
+
+interface="wlan0"
+
+##################< Functions >####################
+
+def chk_su(): #To be implemented later...
+    id=subprocess.call("uid")
+    idVal=re.search(uid, id)
+    re.search() 
+
+
+
+#################< Code >########################
+
+try:
+    subprocess.check_output(["sudo", "airmon-ng", "start", interface ])
+    # time.sleep(1)
+    subprocess.call(["sudo", "airodump-ng", "wlan0mon"])
+except KeyboardInterrupt:
+    subprocess.check_output(["sudo", "airmon-ng", "stop", "wlan0mon"])
+    print("\n\nClosed")

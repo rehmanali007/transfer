@@ -1,0 +1,22 @@
+#!/bin/bash
+
+trap 'rm $tmp && clear && exit' 1 2 3 9 15
+tmp=/tmp/$$.cputemp.log
+
+trap 'rm $tmp && exit' 1 2 3 9 15
+while true
+do
+	clear
+	sensors | grep "Processor" -A 4
+	echo $(sensors | grep "CPU" -A 1) > $tmp
+	CPU_temp=$(grep "CPU" $tmp | cut -b 7,8)
+	Amb_temp=$(grep "Amb" $tmp | cut -b 25,26)
+	#echo -e "CPU Temp: $CPU_temp\nAmbient Temp: $Amb_temp"
+	if [[ $CPU_temp -gt 53 && $Amb_temp -gt 53 ]];
+	then
+		zenity --info --text "Ambient Temp: $Amb_temp\nCPU Temp: $CPU_temp" --timeout=3 &> /dev/null
+	fi
+	sleep 10
+	continue
+done
+

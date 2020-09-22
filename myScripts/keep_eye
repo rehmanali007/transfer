@@ -1,0 +1,171 @@
+#!/bin/bash
+
+#set -x
+##################################################< Variables >################################################
+
+noti=false
+siren=false
+Nova_plus=f4:cb:52:98:8e:da
+Iphone=0c:3e:9f:69:d4:83
+DBfile=~/Records/Keep_eye.log
+trap 'exit' 2
+
+##################################################< Functions >###############################################
+
+function iphone()
+{
+	if [[ $Iphone == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Iphone | cut -d " " -f 3) ]] &> /dev/null
+	then
+		#echo $Iphone > $statusfile
+		echo -e "\nIphone connected at:" >> $DBfile
+		echo $(date +%d-%b-%y%t%a%t%r) >> $DBfile
+		while true
+		do
+			if [[ $Iphone == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Iphone | cut -d " " -f 3) ]] &> /dev/null 
+			then
+				sleep 10
+				continue
+			else
+				break
+			fi
+		done
+		echo "Iphone disconnected at:" >> $DBfile
+		echo $(date +%d-%b-%y%t%a%t%r) >> $DBfile
+		echo -e "\n#############################################################################" >> $DBfile
+	fi
+
+		zenity --width=400 --height=300 --timeout=10 --info --text "Iphone disconnected." &> /dev/null
+}
+
+
+function nova_plus()
+{	
+	if [[ $Nova_plus == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Nova_plus | cut -d " " -f 3) ]] &> /dev/null
+	then
+		echo -e "\nNova plus connected at:" >> $DBfile
+		echo $(date +%d-%b-%y%t%a%t%r) >> $DBfile
+		while true
+		do
+			if [[ $Nova_plus == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Nova_plus | cut -d " " -f 3) ]] &> /dev/null
+			then
+				sleep 10
+				continue
+			else
+				break
+			fi
+		done
+		echo "Nova_plus disconnected at:" >> $DBfile
+		echo $(date +%d-%b-%y%t%a%t%r) >> $DBfile
+		echo -e "\n##############################################################################" >> $DBfile
+	fi
+	zenity --width=400 --height=300 --timeout=10 --info --text "Nova Plus disconnected.." &> /dev/null
+
+}
+
+
+function both()
+{
+	echo -e "\nNove plus and Iphone connected at:" >> $DBfile
+	echo $(date +%d-%b-%y%t%a%t%r) >> $DBfile
+	while true
+	do
+		if [[ $Nova_plus == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Nova_plus | cut -d " " -f 3) && $Iphone == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Iphone | cut -d " " -f 3) ]] &> /dev/null
+		then
+			sleep 10
+			continue
+		else
+			break
+		fi
+	done
+	echo "Anyone of Nova plus or Iphone disconnected at:" >> $DBfile
+	echo $(date +%d-%b-%y%t%a%t%r) >> $DBfile
+	echo -e "\n#################################################################################" >> $DBfile
+	zenity --width=400 --height=300 --timeout=10 --info --text "One or both devices disconnected." &> /dev/null
+
+	
+}
+
+function check_root()
+{
+	if [[ $(whoami) != root ]]
+	then
+		echo "Run script as root..."
+		exit 100
+	fi
+}
+###############################################< Main script >#################################################
+
+check_root
+if [[ $# -eq 0 ]]
+then
+	siren=false
+	noti=false
+elif [[ $# -eq 1 ]]
+then
+	#echo "Entered in 1"	
+	if [[ $1 == "with-siren" ]]
+	then
+		siren=true
+	elif [[ $1 == "with-noti" ]]
+	then
+		noti=true
+		#echo "Exiting 1"
+	fi
+	#echo exited
+elif [[ ($# -eq 2) && (($1 == "with-siren" || $2 == "with-siren") && ( $1 == "with-noti" || $2 == "with-noti" )) ]]
+then
+	#echo"Checking for 2 arg.."
+	siren=true
+	noti=true
+fi
+
+while true
+do
+	#echo "entered whil"
+	if [[ ($Nova_plus == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Nova_plus | cut -d " " -f 3) ) && ($Iphone == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Iphone | cut -d " " -f 3) ) ]] &> /dev/null
+	then
+		if [[ $siren == true && $noti == true ]]
+		then
+			paplay ~/my_scripts/siren.wav &
+			zenity --width=400 --height=300 --timeout=10 --info --text "It worked\nTarget was found with both devices." &> /dev/null
+		elif [[ $siren == true && $noti == false ]]
+		then
+			paplay ~/my_scripts/siren.wav &
+		elif [[ $siren == false && $noti == true ]]
+		then
+			zenity --width=400 --height=300 --timeout=10 --info --text "It worked!\nTarget found with both devices." &> /dev/null
+		fi
+		both
+		continue
+      	elif [[ $Iphone == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Iphone | cut -d " " -f 3) ]] &> /dev/null
+	then
+		if [[ $siren == true && $noti == true ]]
+		then
+			paplay ~/my_scripts/siren.wav &
+			zenity --width=400 --height=300 --timeout=10 --info --text "It worked\nTarget was found with Iphone." &> /dev/null
+		elif [[ $siren == true && $noti == false ]]
+		then
+			paplay ~/my_scripts/siren.wav &
+		elif [[ $siren == false && $noti == true ]]
+		then
+			zenity --width=400 --height=300 --timeout=10 --info --text "It worked!\nTarget found with Iphone." &> /dev/null
+		fi
+		iphone
+		continue
+       	elif [[ $Nova_plus == $(sudo nmap -sn -n 192.168.10.1/24 | grep $Nova_plus | cut -d " " -f 3) ]] &> /dev/null 
+	then
+		if [[ $siren == true && $noti == true ]]
+		then
+			paplay ~/my_scripts/siren.wav &
+			zenity --width=400 --height=300 --timeout=10 --info --text "It worked\nTarget was found with Nova plus." &> /dev/null
+		elif [[ $siren == true && $noti == false ]]
+		then
+			paplay ~/my_scripts/siren.wav &
+		elif [[ $siren == false && $noti == true ]]
+		then
+			zenity --width=400 --height=300 --timeout=10 --info --text "It worked!\nTarget found with Nova plus." &> /dev/null
+		fi
+		nova_plus
+		continue
+	fi
+done

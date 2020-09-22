@@ -1,0 +1,62 @@
+Script started on 2019-09-02 23:37:19+05:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="82" LINES="21"]
+]0;virchual@Linux: ~[01;31mLinux[00m:[01;34m~[00m$ sudo[K[K[K[Ksudo vim pro[K[K[K/proc/acpi/button/lid/LID0/state 
+[sudo] password for virchual: 
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;21r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[21;1H"/proc/acpi/button/lid/LID0/state" [readonly] 1L, 17C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[38;5;130m  1 [mstate:      open
+[94m~                                                                                 [3;1H~                                                                                 [4;1H~                                                                                 [5;1H~                                                                                 [6;1H~                                                                                 [7;1H~                                                                                 [8;1H~                                                                                 [9;1H~                                                                                 [10;1H~                                                                                 [11;1H~                                                                                 [12;1H~                                                                                 [13;1H~                                                                                 [14;1H~                                                                                 [15;1H~                                                                                 [16;1H~                                                                                 [17;1H~                                                                                 [18;1H~                                                                                 [19;1H~                                                                                 [20;1H~                                                                                 [m[21;65H1,1[11CAll[1;5H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[93m  1 [mstate:      open
+[94m~                                                                                 [3;1H~                                                                                 [4;1H~                                                                                 [5;1H~                                                                                 [6;1H~                                                                                 [7;1H~                                                                                 [8;1H~                                                                                 [9;1H~                                                                                 [10;1H~                                                                                 [11;1H~                                                                                 [12;1H~                                                                                 [13;1H~                                                                                 [14;1H~                                                                                 [15;1H~                                                                                 [16;1H~                                                                                 [17;1H~                                                                                 [18;1H~                                                                                 [19;1H~                                                                                 [20;1H~                                                                                 [m[21;65H1,1[11CAll"/proc/acpi/button/lid/LID0/state" [readonly] 1L, 17C[1;5H[?25h[?25l[21;55H^[[1;5H[21;55H  [1;5H[21;55H^[[1;5H[21;55H  [1;5H[?25h[?25l[21;55H:[1;5H[21;1H[K[21;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[97m[41mE45: 'readonly' option is set (add ! to override)[?2004h[1;5H[m[21;65H1,1[11CAll[1;5H[?25h[?25l[21;55H:[1;5H[21;1H[K[21;1H:[?2004h[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t[21;1H[K[21;1H[?2004l[?1l>[?25h[?1049l[23;0;0t]0;virchual@Linux: ~[01;31mLinux[00m:[01;34m~[00m$ sudo vim /proc/acpi/button/lid/LID0/state [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Keve[K[K[Keve[K[K[K
+button/ wakeup  
+]0;virchual@Linux: ~[01;31mLinux[00m:[01;34m~[00m$ sudo vim /proc/acpi/
+button/ wakeup  
+]0;virchual@Linux: ~[01;31mLinux[00m:[01;34m~[00m$ sudo vim /proc/acpi/button/lid/LID0/state [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kwakeup 
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;21r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[21;1H"/proc/acpi/wakeup" 30L, 763C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[38;5;130m  1 [mDevice  S-state   Status   Sysfs node
+[38;5;130m  2 [mRP01      S3    *enabled   pci:0000:00:1c.0
+[38;5;130m  3 [mPXSX      S4    *disabled
+[38;5;130m  4 [mRP02      S3    *disabled
+[38;5;130m  5 [mPXSX      S4    *disabled
+[38;5;130m  6 [mRP03      S3    *enabled   pci:0000:00:1c.2
+[38;5;130m  7 [mPXSX      S4    *disabled  pci:0000:06:00.0
+[38;5;130m  8 [mRP04      S3    *enabled   pci:0000:00:1c.3
+[38;5;130m  9 [mPXSX      S4    *disabled  pci:0000:07:00.0
+[38;5;130m 10 [mRP05      S3    *disabled
+[38;5;130m 11 [mPXSX      S4    *disabled
+[38;5;130m 12 [mRP06      S3    *disabled
+[38;5;130m 13 [mPXSX      S4    *disabled
+[38;5;130m 14 [mRP07      S3    *disabled
+[38;5;130m 15 [mPXSX      S4    *disabled
+[38;5;130m 16 [mRP08      S3    *disabled
+[38;5;130m 17 [mPXSX      S4    *disabled
+[38;5;130m 18 [mGLAN      S3    *disabled
+[38;5;130m 19 [mEHC1      S0    *enabled   pci:0000:00:1d.0
+[38;5;130m 20 [mEHC2      S0    *disabled[21;65H1,1[11CTop[1;5H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[93m  1 [mDevice  S-state   Status   Sysfs node
+[93m  2 [mRP01      S3    *enabled   pci:0000:00:1c.0
+[93m  3 [mPXSX      S4    *disabled
+[93m  4 [mRP02      S3    *disabled
+[93m  5 [mPXSX      S4    *disabled
+[93m  6 [mRP03      S3    *enabled   pci:0000:00:1c.2
+[93m  7 [mPXSX      S4    *disabled  pci:0000:06:00.0
+[93m  8 [mRP04      S3    *enabled   pci:0000:00:1c.3
+[93m  9 [mPXSX      S4    *disabled  pci:0000:07:00.0
+[93m 10 [mRP05      S3    *disabled
+[93m 11 [mPXSX      S4    *disabled
+[93m 12 [mRP06      S3    *disabled
+[93m 13 [mPXSX      S4    *disabled
+[93m 14 [mRP07      S3    *disabled
+[93m 15 [mPXSX      S4    *disabled
+[93m 16 [mRP08      S3    *disabled
+[93m 17 [mPXSX      S4    *disabled
+[93m 18 [mGLAN      S3    *disabled
+[93m 19 [mEHC1      S0    *enabled   pci:0000:00:1d.0
+[93m 20 [mEHC2      S0    *disabled[21;65H1,1[11CTop"/proc/acpi/wakeup" 30L, 763C[1;5H[?25h[?25l[21;55H:[1;5H[21;1H[K[21;1H:[?2004h[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t[21;1H[K[21;1H[?2004l[?1l>[?25h[?1049l[23;0;0t]0;virchual@Linux: ~[01;31mLinux[00m:[01;34m~[00m$ sudo vim /proc/acpi/wakeup [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kproc/[K[K[K[K[Ketc/acpi/evw[Kents/powerbtn-acpi-support 
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;21r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[21;1H"/etc/acpi/events/powerbtn-acpi-support" 4L, 122C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[38;5;130m  1 [mevent=button[ /]power
+[38;5;130m  2 [maction=/etc/acpi/powerbtn-acpi-support.sh
+[38;5;130m  3 [mevent=button[ /]lid
+[38;5;130m  4 [maction=/home/virchual/myScripts/lockw
+[94m~                                                                                 [6;1H~                                                                                 [7;1H~                                                                                 [8;1H~                                                                                 [9;1H~                                                                                 [10;1H~                                                                                 [11;1H~                                                                                 [12;1H~                                                                                 [13;1H~                                                                                 [14;1H~                                                                                 [15;1H~                                                                                 [16;1H~                                                                                 [17;1H~                                                                                 [18;1H~                                                                                 [19;1H~                                                                                 [20;1H~                                                                                 [m[21;65H4,32[10CAll[4;36H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[93m  1 [mevent=button[ /]power
+[93m  2 [maction=/etc/acpi/powerbtn-acpi-support.sh
+[93m  3 [mevent=button[ /]lid
+[93m  4 [maction=/home/virchual/myScripts/lockw
+[94m~                                                                                 [6;1H~                                                                                 [7;1H~                                                                                 [8;1H~                                                                                 [9;1H~                                                                                 [10;1H~                                                                                 [11;1H~                                                                                 [12;1H~                                                                                 [13;1H~                                                                                 [14;1H~                                                                                 [15;1H~                                                                                 [16;1H~                                                                                 [17;1H~                                                                                 [18;1H~                                                                                 [19;1H~                                                                                 [20;1H~                                                                                 [m[21;65H4,32[10CAll"/etc/acpi/events/powerbtn-acpi-support" 4L, 122C[4;36H[?25h[?25l[21;55H^[[4;36H[21;55H  [4;36H[21;55H^[[4;36H[21;55H  [4;36H[?25h[?25l[21;55H^[[4;36H[21;55H  [4;36H[21;55H^[[4;36H[21;55H  [4;36H[?25h[?25l[21;55H:[4;36H[21;1H[K[21;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"/etc/acpi/events/powerbtn-acpi-support"</acpi/events/powerbtn-acpi-support" 4L, 122C written[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0t]0;virchual@Linux: ~[01;31mLinux[00m:[01;34m~[00m$ exit
+exit
+
+Script done on 2019-09-02 23:39:37+05:00 [COMMAND_EXIT_CODE="0"]

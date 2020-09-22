@@ -1,0 +1,42 @@
+#!/bin/bash
+
+############################################< Variables >################################################
+
+link="$1"
+trap 'clear && exit' 2
+
+############################################< Main Script >################################################
+if [[ $# -ne 1 ]]
+then
+	echo "Supply download link..."
+	exit 1
+fi
+
+while true
+do
+	clear
+	wget -c -t 2 -T 10 -w 1 "$link"
+	if [[ $? -ne 0 ]]
+	then
+		while true
+		do
+			clear
+			echo "Checking internet connection..."
+			ping -c 3 google.com &> /dev/null
+			if [[ $? -ne 0 ]]
+			then
+				echo -e "No internet connection...\nWil check again after 10 seconds..."
+				sleep 10
+				continue
+			else
+				echo -e "Connected to internet...\nDownload will continue in 3 seconds..."
+				sleep 3
+				break
+			fi
+		done
+	else
+		clear
+		echo "Download complete..."
+		break
+	fi
+done

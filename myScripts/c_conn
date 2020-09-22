@@ -1,0 +1,17 @@
+#!/bin/bash
+
+while true
+do
+	ping -c 3 google.com &> /dev/null
+	
+	if [[ $? -ne 0 ]]
+	then
+		sleep 10
+		continue
+	else
+		zenity --info --text="You are now connected to internet..." --width=300 --height=200 &> /dev/null
+		break
+	fi
+done
+exit
+

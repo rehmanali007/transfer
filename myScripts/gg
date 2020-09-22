@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+query="$1"
+set $@ 
+link="https://www.google.com/search?q=$@"
+xdg-open $link
