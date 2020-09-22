@@ -1,0 +1,4 @@
+virchual linux = (root) NOPASSWD: /usr/bin/apt
+virchual linux = (root) NOPASSWD: /usr/sbin/pm-hibernate
+virchual linux = (root) NOPASSWD: /usr/bin/htop
+
